@@ -10,9 +10,9 @@ radius = 29.9277
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 543.978
+radius = 366.344
 
-[node name="planet" type="StaticBody2D"]
+[node name="planet" type="KinematicBody2D"]
 
 transform/pos = Vector2( 649.968, 207.141 )
 transform/scale = Vector2( 1.63378, 1.46264 )
@@ -22,10 +22,7 @@ shapes/0/transform = Matrix32( 1, 0, 0, 1, -1.16797, -1.45995 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+collision/margin = 0.08
 
 [node name="sprite" type="Sprite" parent="."]
 
@@ -58,6 +55,7 @@ priority = 1.0
 
 [node name="gravity" type="CollisionShape2D" parent="gravity"]
 
+visibility/visible = false
 transform/pos = Vector2( -5.77377, 0.640472 )
 shape = SubResource( 2 )
 trigger = false

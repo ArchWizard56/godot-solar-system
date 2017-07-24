@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://src/scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/bg5.jpg" type="Texture" id=2]
 [ext_resource path="res://src/scenes/planet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/moon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/scenes/Rocket.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scenes/orbitAroundParent.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scripts/orbitAroundParent.gd" type="Script" id=6]
+[ext_resource path="res://src/scenes/Rocket.tscn" type="PackedScene" id=7]
 
 [node name="main" type="Node"]
 
@@ -31,23 +33,28 @@ motion/mirroring = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 
-transform/pos = Vector2( 704.154, 41.8459 )
-transform/scale = Vector2( 3.5, 3.5 )
+transform/pos = Vector2( 31214, 10982.9 )
+transform/scale = Vector2( 1.75, 1.75 )
 texture = ExtResource( 2 )
 
 [node name="planet" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( -379.808, 1812.13 )
-transform/scale = Vector2( 40, 40 )
+transform/pos = Vector2( 30725.3, 13444.3 )
+transform/scale = Vector2( 20, 20 )
 
 [node name="moon" parent="planet" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 200.18, 1.9039 )
+transform/pos = Vector2( 206.028, 44.1659 )
 transform/scale = Vector2( 0.175, 0.175 )
 
-[node name="RigidBody2D" parent="." instance=ExtResource( 5 )]
+[node name="orbitAroundParent" parent="planet/moon" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 660.291, 129.022 )
+script/script = ExtResource( 6 )
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 30189.9, 11455.5 )
+transform/scale = Vector2( 0.5, 0.5 )
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
 
@@ -55,7 +62,7 @@ transform/pos = Vector2( 2.27203, 2.27206 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 4, 4 )
+zoom = Vector2( 2, 2 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
