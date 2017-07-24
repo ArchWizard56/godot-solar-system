@@ -28,6 +28,4 @@ func _fixed_process(delta):
 		angle += 0.0017453 
 		newPos.x = rad * cos(angle)
 		newPos.y = rad * sin(angle)
-	print(par.get_pos())
-	print(get_node("../..").get_pos())
 	par.set_pos(newPos)
